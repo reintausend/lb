@@ -1,0 +1,797 @@
+/* ==========================================================================
+   Luki Becker — Portfolio
+   Mobile-first stylesheet. Design tokens in :root, see PROJECT.md.
+   ========================================================================== */
+
+/* ---- Fonts (self-hosted, only the weights in use) ---- */
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("assets/fonts/IBM_Plex_Sans/static/IBMPlexSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("assets/fonts/IBM_Plex_Sans/static/IBMPlexSans-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---- Design tokens ---- */
+
+:root {
+  --color-bg: #e8e8e8;
+  --color-text: #000000;
+  --color-title: #2950ff;
+  --color-game: #2bf970;
+  --color-audio: #ccf92b;
+  --color-video: #f92be8;
+  --color-pill: #d9d9d9; /* date pill; spec said #E7E7E7 but that is invisible on #E8E8E8 */
+
+  --font-family: "IBM Plex Sans", sans-serif;
+  --font-size-title: 24px;
+  --font-size-tab: 20px;
+  --font-size-body: 14px;
+  --font-size-feed-sentence: 14px;
+
+  --color-ui: #c8c8c8; /* inactive nav tab + UI surfaces */
+  --color-filter-track: #ffffff;
+
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 40px;
+  --space-5: 56px;
+
+  --page-max-width: 640px; /* mobile-first; caps line length on larger screens */
+}
+
+/* ---- Base ---- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: var(--font-size-body);
+  line-height: 1.5;
+  /* sticky footer: main grows, footer sits at the bottom even on short pages */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+body.overlay-open {
+  overflow: hidden;
+}
+
+.site-main {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+  display: block;
+}
+
+/* clip wrapper added by scripts.js — keeps blur inside image bounds */
+.img-clip {
+  overflow: hidden;
+  line-height: 0;
+}
+
+/* blur-in while loading (class removed by scripts.js once loaded) */
+img {
+  transition: filter 0.4s ease;
+}
+
+img.img-loading {
+  filter: blur(14px);
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 400;
+  margin: 0;
+}
+
+/* ---- Layout ---- */
+
+.site-main,
+.site-footer {
+  width: 100%;
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+}
+
+/* ---- Header (50/50 Feed | About tabs, same column as the page) ---- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: 0 0 var(--space-2); /* 16px below tabs */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--color-bg);
+  overflow: hidden; /* clip sunken corner radius */
+}
+
+/*
+  Sunken fill is painted on the header (edge-pinned), not the tab grid cell,
+  so subpixel gaps at the column edge can't flash --color-bg.
+*/
+.site-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: var(--space-2);
+  width: calc(50% + 2px); /* overlap the center seam */
+  background: var(--color-ui);
+  pointer-events: none;
+  z-index: 0;
+  display: none;
+}
+
+.site-header:has(.site-tab:last-child:not(.is-active))::before {
+  display: block;
+  right: 0;
+  left: auto;
+  border-radius: 0 0 0 18px;
+  box-shadow: inset 8px 0 10px -4px rgba(0, 0, 0, 0.22);
+}
+
+.site-header:has(.site-tab:first-child:not(.is-active))::before {
+  display: block;
+  left: 0;
+  right: auto;
+  border-radius: 0 0 18px 0;
+  box-shadow: inset -8px 0 10px -4px rgba(0, 0, 0, 0.22);
+}
+
+.site-tab {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* left-aligned within each half */
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 12px var(--space-2); /* 16px horizontal — same as --space-2 / page content */
+  font-size: var(--font-size-tab);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-text);
+  text-decoration: none;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+/* Active = flat / flush with page (covers the sunken ::before on its half) */
+.site-tab.is-active {
+  background: var(--color-bg);
+}
+
+/* ---- Filter (segmented capsule — screenshot ref) ---- */
+
+.filter-panel {
+  margin-top: var(--space-3);
+  margin-left: calc(-1 * var(--space-2));
+  margin-right: calc(-1 * var(--space-2));
+  margin-bottom: var(--space-2);
+  padding: 0 var(--space-2);
+}
+
+.filter-bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.filter-group {
+  display: flex;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 999px;
+  background: var(--color-filter-track);
+  overflow: hidden;
+}
+
+.filter-chip {
+  flex: 1;
+  position: relative;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: var(--font-size-body);
+  color: var(--color-text);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 6px 8px;
+  cursor: pointer;
+  box-shadow: none;
+  transition: background 0.15s ease, color 0.15s ease, opacity 0.15s ease;
+}
+
+.filter-chip:not(:first-child) {
+  box-shadow: inset 1px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.filter-chip.active {
+  box-shadow: none;
+}
+
+.filter-chip.active + .filter-chip {
+  box-shadow: none;
+}
+
+.filter-group--type {
+  background: linear-gradient(
+    to right,
+    var(--color-game) 0%,
+    var(--color-audio) 50%,
+    var(--color-video) 100%
+  );
+  border: none;
+}
+
+.filter-group--type .filter-chip {
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Thin vertical dividers via pseudo (does not fight inset shadows) */
+.filter-group--type .filter-chip + .filter-chip::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(0, 0, 0, 0.12);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.filter-group--type .filter-chip.active {
+  background: transparent;
+}
+
+.filter-group--type .filter-chip:not(.active) {
+  /* same grey as inactive Feed/About tab — fully covers the gradient */
+  background: var(--color-ui);
+  opacity: 1;
+}
+
+/*
+  Inactive runs share one sunken region (same strength as tabs: 0.22).
+  Outer perimeter gets 4-sided inset; shared edges keep only the ::before line.
+  !important needed so generic .filter-chip / .active + .filter-chip dividers cannot win.
+*/
+.filter-group--type .filter-chip:not(.active).inactive-alone {
+  box-shadow:
+    inset 8px 0 10px -4px rgba(0, 0, 0, 0.22),
+    inset -8px 0 10px -4px rgba(0, 0, 0, 0.22),
+    inset 0 8px 10px -4px rgba(0, 0, 0, 0.22),
+    inset 0 -8px 10px -4px rgba(0, 0, 0, 0.22) !important;
+}
+
+.filter-group--type .filter-chip:not(.active).inactive-start {
+  box-shadow:
+    inset 8px 0 10px -4px rgba(0, 0, 0, 0.22),
+    inset 0 8px 10px -4px rgba(0, 0, 0, 0.22),
+    inset 0 -8px 10px -4px rgba(0, 0, 0, 0.22) !important;
+}
+
+.filter-group--type .filter-chip:not(.active).inactive-mid {
+  box-shadow:
+    inset 0 8px 10px -4px rgba(0, 0, 0, 0.22),
+    inset 0 -8px 10px -4px rgba(0, 0, 0, 0.22) !important;
+}
+
+.filter-group--type .filter-chip:not(.active).inactive-end {
+  box-shadow:
+    inset -8px 0 10px -4px rgba(0, 0, 0, 0.22),
+    inset 0 8px 10px -4px rgba(0, 0, 0, 0.22),
+    inset 0 -8px 10px -4px rgba(0, 0, 0, 0.22) !important;
+}
+
+.filter-group.has-selection .filter-chip:not(.active) {
+  opacity: 0.45;
+}
+
+.filter-group--type.has-selection .filter-chip:not(.active) {
+  opacity: 1;
+  background: var(--color-ui);
+}
+
+/* ---- Feed ---- */
+
+.feed {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 var(--space-4);
+}
+
+.project-entry {
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.project-entry.hidden {
+  display: none;
+}
+
+.entry-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-bottom: 8px;
+}
+
+/* shared pill shape for date + type, same as the filter chips */
+.pill {
+  font-weight: 300;
+  font-size: var(--font-size-body);
+  padding: 2px 12px;
+  border-radius: 999px;
+}
+
+.pill-date {
+  background: var(--color-pill);
+}
+
+.type-chip {
+  font-weight: 300;
+  font-size: var(--font-size-body);
+  padding: 2px 12px;
+  border-radius: 999px;
+}
+
+.type-chip.game {
+  background: var(--color-game);
+}
+
+.type-chip.audio {
+  background: var(--color-audio);
+}
+
+.type-chip.video {
+  background: var(--color-video);
+}
+
+.entry-title-row {
+  display: flex;
+  align-items: baseline;
+}
+
+.entry-toggle {
+  flex: none;
+  width: var(--space-3);
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-size: var(--font-size-title);
+  line-height: 1;
+  color: var(--color-title);
+  text-align: left;
+}
+
+.entry-toggle .icon-minus,
+.project-entry.expanded .entry-toggle .icon-plus {
+  display: none;
+}
+
+.project-entry.expanded .entry-toggle .icon-minus {
+  display: inline;
+}
+
+.entry-title {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--font-size-title);
+  color: var(--color-title);
+  line-height: 1.2;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.project-entry.expanded .entry-title {
+  white-space: normal;
+  overflow: visible;
+}
+
+.entry-details {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.28s ease;
+}
+
+.entry-details .entry-link {
+  display: block;
+  overflow: hidden;
+  min-height: 0;
+  text-decoration: none;
+  color: inherit;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.22s ease, transform 0.28s ease;
+}
+
+.entry-details img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.project-entry.expanded .entry-details {
+  grid-template-rows: 1fr;
+  padding-top: var(--space-1);
+}
+
+.project-entry.expanded .entry-details .entry-link {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.entry-sentence {
+  margin: var(--space-1) 0 0;
+  font-size: var(--font-size-feed-sentence);
+  line-height: 1.5;
+}
+
+/* ---- Project page ---- */
+
+.project-page {
+  flex: 1 0 auto;
+  padding-bottom: var(--space-4);
+}
+
+.project-date {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin: var(--space-2) 0 0;
+}
+
+.project-title-row {
+  display: flex;
+  align-items: baseline;
+  margin: var(--space-1) 0 var(--space-2);
+}
+
+.project-back {
+  flex: none;
+  width: var(--space-3);
+  font-size: var(--font-size-title);
+  line-height: 1;
+  color: var(--color-title);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.project-title {
+  font-size: var(--font-size-title);
+  color: var(--color-title);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.project-preview {
+  margin: 0 0 var(--space-3);
+}
+
+.project-preview img {
+  width: 100%;
+  height: auto;
+}
+
+.project-meta {
+  margin: 0 0 var(--space-3);
+}
+
+.project-meta > div {
+  display: flex;
+  gap: var(--space-1);
+  padding: 2px 0;
+}
+
+.project-meta dt {
+  flex: none;
+  width: 90px;
+  font-weight: 300;
+}
+
+.project-meta dd {
+  margin: 0;
+}
+
+.project-content {
+  font-size: var(--font-size-body);
+  line-height: 1.6;
+}
+
+.project-content > * {
+  margin: 0 0 var(--space-2);
+}
+
+.project-content img,
+.project-content video {
+  width: 100%;
+  height: auto;
+}
+
+/* responsive 16:9 wrapper for YouTube embeds */
+.video-embed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-2);
+}
+
+.video-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.audio-embed {
+  width: 100%;
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-2);
+}
+
+.audio-embed iframe {
+  width: 100%;
+  height: 450px;
+  border: 0;
+}
+
+/* ---- Project overlay ----
+   Feed / About stay put. Only the sheet under the header slides up.
+   About uses .instant — no slide. */
+
+#project-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: transparent;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+}
+
+#project-overlay.open,
+#project-overlay.is-leaving {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+#project-overlay > .site-header {
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+.overlay-sheet {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg);
+  transform: translateY(100%);
+  transition: transform 0.35s ease;
+}
+
+#project-overlay.instant .overlay-sheet {
+  transition: none;
+}
+
+#project-overlay.open .overlay-sheet {
+  transform: translateY(0);
+}
+
+#project-overlay > .overlay-sheet > .site-main {
+  flex: 1 0 auto;
+}
+
+#project-overlay > .overlay-sheet > .site-footer {
+  flex-shrink: 0;
+}
+
+/* ---- About page ---- */
+
+.about-page {
+  flex: 1 0 auto;
+  padding-bottom: var(--space-4);
+}
+
+.about-page section {
+  margin-bottom: var(--space-4);
+}
+
+.about-page h2 {
+  font-size: var(--font-size-title);
+  color: var(--color-title);
+  margin-bottom: var(--space-2);
+}
+
+.about-profile {
+  margin: var(--space-3) 0;
+}
+
+.about-profile img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: var(--space-2);
+  font-size: 12px;
+  line-height: 1.2;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.lang-switch-btn {
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: rgba(0, 0, 0, 0.4);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.lang-switch-btn.is-active {
+  color: var(--color-text);
+}
+
+.lang-switch-sep {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.about-bio p {
+  margin: 0;
+  font-size: var(--font-size-body);
+  line-height: 1.5;
+}
+
+.instagram-embed {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.instagram-embed .instagram-media {
+  margin: 0 auto !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+.press-pic {
+  margin: 0 0 var(--space-3);
+}
+
+.press-pic img {
+  width: 100%;
+  height: auto;
+  margin-bottom: var(--space-1);
+}
+
+.button {
+  display: inline-block;
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  color: var(--color-text);
+  background: transparent;
+  border: 1px solid var(--color-text);
+  border-radius: 999px;
+  padding: 4px 16px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  align-items: flex-start;
+}
+
+.contact-form label {
+  font-weight: 300;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  background: transparent;
+  border: 1px solid var(--color-text);
+  padding: var(--space-1);
+}
+
+.contact-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* ---- Legal page (same title row as project detail) ---- */
+
+.legal-page {
+  flex: 1 0 auto;
+  padding-bottom: var(--space-4);
+}
+
+.legal-page .project-title-row {
+  margin-bottom: var(--space-3);
+}
+
+.legal-page h2 {
+  font-size: var(--font-size-body);
+  font-weight: 700;
+  color: var(--color-text);
+  margin: var(--space-3) 0 var(--space-1);
+}
+
+.legal-page .project-title-row + section h2 {
+  margin-top: 0;
+}
+
+/* ---- Footer ---- */
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-shrink: 0;
+  margin-top: auto;
+  padding-top: var(--space-5);
+  padding-bottom: var(--space-3);
+}

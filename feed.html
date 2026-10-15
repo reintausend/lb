@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Luki B</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-tab is-active" href="feed.html" aria-current="page">Feed</a>
+    <a class="site-tab" href="about/about.html">About</a>
+  </header>
+
+  <main class="site-main">
+    <div class="filter-panel">
+    <div class="filter-bar" role="group" aria-label="Filter projects">
+      <div class="filter-group filter-group--type">
+        <button class="filter-chip active" data-filter-group="type" data-filter-value="game" aria-pressed="true">Game</button>
+        <button class="filter-chip active" data-filter-group="type" data-filter-value="audio" aria-pressed="true">Audio</button>
+        <button class="filter-chip active" data-filter-group="type" data-filter-value="video" aria-pressed="true">Video</button>
+      </div>
+    </div>
+    </div>
+
+    <ul class="feed">
+      <li class="project-entry" data-type="game">
+        <div class="entry-meta">
+          <span class="pill pill-date">19/06/2026</span>
+          <span class="type-chip game">Game</span>
+        </div>
+        <div class="entry-title-row">
+          <button class="entry-toggle" aria-expanded="false" aria-controls="details-corecore-mansion" aria-label="Toggle details for corecore mansion">
+            <span class="icon-plus">+</span><span class="icon-minus">&minus;</span>
+          </button>
+          <h2 class="entry-title">corecore mansion</h2>
+        </div>
+        <div class="entry-details" id="details-corecore-mansion">
+          <a class="entry-link" href="projects/corecore-mansion/corecore-mansion.html">
+            <img src="projects/corecore-mansion/setup1.PNG" alt="corecore mansion preview image" loading="lazy">
+            <p class="entry-sentence">Hello, Im trying to fix a metronome to help me with a certain speedrunning strat.</p>
+          </a>
+        </div>
+      </li>
+      <li class="project-entry" data-type="video">
+        <div class="entry-meta">
+          <span class="pill pill-date">27/03/2026</span>
+          <span class="type-chip video">Video</span>
+        </div>
+        <div class="entry-title-row">
+          <button class="entry-toggle" aria-expanded="false" aria-controls="details-ghost-me-if-you-can" aria-label="Toggle details for Ghost Me If You Can">
+            <span class="icon-plus">+</span><span class="icon-minus">&minus;</span>
+          </button>
+          <h2 class="entry-title">Ghost Me If You Can</h2>
+        </div>
+        <div class="entry-details" id="details-ghost-me-if-you-can">
+          <a class="entry-link" href="projects/ghost-me-if-you-can/ghost-me-if-you-can.html">
+            <img src="assets/images/placeholder.svg" alt="Ghost Me If You Can preview image" loading="lazy">
+            <p class="entry-sentence">Digital Stagedesign (Video) for a Multimedia Opera</p>
+          </a>
+        </div>
+      </li>
+      <li class="project-entry expanded" data-type="game">
+        <div class="entry-meta">
+          <span class="pill pill-date">19/12/2025</span>
+          <span class="type-chip game">Game</span>
+        </div>
+        <div class="entry-title-row">
+          <button class="entry-toggle" aria-expanded="true" aria-controls="details-streamer" aria-label="Toggle details for STREAMER">
+            <span class="icon-plus">+</span><span class="icon-minus">&minus;</span>
+          </button>
+          <h2 class="entry-title">STREAMER</h2>
+        </div>
+        <div class="entry-details" id="details-streamer">
+          <a class="entry-link" href="projects/streamer/streamer.html">
+            <img src="projects/streamer/STREAMER_Promo1_credit_Luki_Becker.jpg" alt="STREAMER preview image" loading="lazy">
+            <p class="entry-sentence">A livestream performance</p>
+          </a>
+        </div>
+      </li>
+      <li class="project-entry" data-type="audio">
+        <div class="entry-meta">
+          <span class="pill pill-date">14/06–15/06/2025</span>
+          <span class="type-chip audio">Audio</span>
+        </div>
+        <div class="entry-title-row">
+          <button class="entry-toggle" aria-expanded="false" aria-controls="details-die-verlorene-ehre-der-katharina-blum" aria-label="Toggle details for Die verlorene Ehre der Katharina Blum">
+            <span class="icon-plus">+</span><span class="icon-minus">&minus;</span>
+          </button>
+          <h2 class="entry-title">Die verlorene Ehre der Katharina Blum</h2>
+        </div>
+        <div class="entry-details" id="details-die-verlorene-ehre-der-katharina-blum">
+          <a class="entry-link" href="projects/die-verlorene-ehre-der-katharina-blum/die-verlorene-ehre-der-katharina-blum.html">
+            <img src="assets/images/placeholder.svg" alt="Die verlorene Ehre der Katharina Blum preview image" loading="lazy">
+            <p class="entry-sentence">Sound for a Theatre Piece by Aniol Kirberg</p>
+          </a>
+        </div>
+      </li>
+      <li class="project-entry expanded" data-type="game">
+        <div class="entry-meta">
+          <span class="pill pill-date">07/06/2025</span>
+          <span class="type-chip game">Game</span>
+        </div>
+        <div class="entry-title-row">
+          <button class="entry-toggle" aria-expanded="true" aria-controls="details-watch-me-crawl" aria-label="Toggle details for Watch Me Crawl">
+            <span class="icon-plus">+</span><span class="icon-minus">&minus;</span>
+          </button>
+          <h2 class="entry-title">Watch Me Crawl</h2>
+        </div>
+        <div class="entry-details" id="details-watch-me-crawl">
+          <a class="entry-link" href="projects/watch-me-crawl/watch-me-crawl.html">
+            <img src="projects/watch-me-crawl/IMG_2FF03224B172-1.jpeg" alt="Watch Me Crawl preview image" loading="lazy">
+            <p class="entry-sentence">Gaming performance about LIFE &amp; DEATH</p>
+          </a>
+        </div>
+      </li>
+      <li class="project-entry" data-type="game">
+        <div class="entry-meta">
+          <span class="pill pill-date">18/10/2024</span>
+          <span class="type-chip game">Game</span>
+        </div>
+        <div class="entry-title-row">
+          <button class="entry-toggle" aria-expanded="false" aria-controls="details-piano-city-2" aria-label="Toggle details for Piano City 2">
+            <span class="icon-plus">+</span><span class="icon-minus">&minus;</span>
+          </button>
+          <h2 class="entry-title">Piano City 2</h2>
+        </div>
+        <div class="entry-details" id="details-piano-city-2">
+          <a class="entry-link" href="projects/piano-city-2/piano-city-2.html">
+            <img src="assets/images/placeholder.svg" alt="Piano City 2 preview image" loading="lazy">
+            <p class="entry-sentence">Gaming performance triggering a self playing piano</p>
+          </a>
+        </div>
+      </li>
+      <li class="project-entry expanded" data-type="video">
+        <div class="entry-meta">
+          <span class="pill pill-date">26/01/2024</span>
+          <span class="type-chip video">Video</span>
+        </div>
+        <div class="entry-title-row">
+          <button class="entry-toggle" aria-expanded="true" aria-controls="details-andras-2020-x-luki-becker-2024" aria-label="Toggle details for Andras_2020 x Luki Becker">
+            <span class="icon-plus">+</span><span class="icon-minus">&minus;</span>
+          </button>
+          <h2 class="entry-title">Andras_2020 x Luki Becker</h2>
+        </div>
+        <div class="entry-details" id="details-andras-2020-x-luki-becker-2024">
+          <a class="entry-link" href="projects/andras-2020-x-luki-becker-2024/andras-2020-x-luki-becker-2024.html">
+            <img src="projects/andras-2020-x-luki-becker-2024/photo_2024-11-20 17.19.39.jpeg" alt="Andras_2020 x Luki Becker preview image" loading="lazy">
+            <p class="entry-sentence">A/V Live Concert</p>
+          </a>
+        </div>
+      </li>
+      <li class="project-entry" data-type="audio">
+        <div class="entry-meta">
+          <span class="pill pill-date">15/11–09/12/2023</span>
+          <span class="type-chip audio">Audio</span>
+        </div>
+        <div class="entry-title-row">
+          <button class="entry-toggle" aria-expanded="false" aria-controls="details-ay-papi-ay-mami" aria-label="Toggle details for Ay Papi Ay Mami">
+            <span class="icon-plus">+</span><span class="icon-minus">&minus;</span>
+          </button>
+          <h2 class="entry-title">Ay Papi Ay Mami</h2>
+        </div>
+        <div class="entry-details" id="details-ay-papi-ay-mami">
+          <a class="entry-link" href="projects/ay-papi-ay-mami/ay-papi-ay-mami.html">
+            <img src="assets/images/placeholder.svg" alt="Ay Papi Ay Mami preview image" loading="lazy">
+            <p class="entry-sentence">Theatre concert performance about femicidal texts in popmusic</p>
+          </a>
+        </div>
+      </li>
+      <li class="project-entry" data-type="game">
+        <div class="entry-meta">
+          <span class="pill pill-date">25/10–29/10/2023</span>
+          <span class="type-chip game">Game</span>
+        </div>
+        <div class="entry-title-row">
+          <button class="entry-toggle" aria-expanded="false" aria-controls="details-game-engines-as-an-artistic-medium" aria-label="Toggle details for Game engines as an artistic medium with Unreal Engine 5">
+            <span class="icon-plus">+</span><span class="icon-minus">&minus;</span>
+          </button>
+          <h2 class="entry-title">Game engines as an artistic medium with Unreal Engine 5</h2>
+        </div>
+        <div class="entry-details" id="details-game-engines-as-an-artistic-medium">
+          <a class="entry-link" href="projects/game-engines-as-an-artistic-medium/game-engines-as-an-artistic-medium.html">
+            <img src="assets/images/placeholder.svg" alt="Game engines as an artistic medium with Unreal Engine 5 preview image" loading="lazy">
+            <p class="entry-sentence">A Workshop on how to think and use UnrealEngine as an artistic medium</p>
+          </a>
+        </div>
+      </li>
+      <li class="project-entry" data-type="game">
+        <div class="entry-meta">
+          <span class="pill pill-date">04/10/2023</span>
+          <span class="type-chip game">Game</span>
+        </div>
+        <div class="entry-title-row">
+          <button class="entry-toggle" aria-expanded="false" aria-controls="details-shard-quest" aria-label="Toggle details for Shard Quest">
+            <span class="icon-plus">+</span><span class="icon-minus">&minus;</span>
+          </button>
+          <h2 class="entry-title">Shard Quest</h2>
+        </div>
+        <div class="entry-details" id="details-shard-quest">
+          <a class="entry-link" href="projects/shard-quest/shard-quest.html">
+            <img src="assets/images/placeholder.svg" alt="Shard Quest preview image" loading="lazy">
+            <p class="entry-sentence">Computer Game as a medium for electronic composition (Bachelor Thesis)</p>
+          </a>
+        </div>
+      </li>
+      <li class="project-entry expanded" data-type="game">
+        <div class="entry-meta">
+          <span class="pill pill-date">08/09/2023</span>
+          <span class="type-chip game">Game</span>
+        </div>
+        <div class="entry-title-row">
+          <button class="entry-toggle" aria-expanded="true" aria-controls="details-pay-to-win" aria-label="Toggle details for Pay To Win">
+            <span class="icon-plus">+</span><span class="icon-minus">&minus;</span>
+          </button>
+          <h2 class="entry-title">Pay To Win</h2>
+        </div>
+        <div class="entry-details" id="details-pay-to-win">
+          <a class="entry-link" href="projects/pay-to-win/pay-to-win.html">
+            <img src="projects/pay-to-win/5_1.3.4.png" alt="Pay To Win preview image" loading="lazy">
+            <p class="entry-sentence">Interactive Game Installation</p>
+          </a>
+        </div>
+      </li>
+      <li class="project-entry" data-type="video">
+        <div class="entry-meta">
+          <span class="pill pill-date">30/06–09/07/2023</span>
+          <span class="type-chip video">Video</span>
+        </div>
+        <div class="entry-title-row">
+          <button class="entry-toggle" aria-expanded="false" aria-controls="details-miosmile" aria-label="Toggle details for Mio$mile">
+            <span class="icon-plus">+</span><span class="icon-minus">&minus;</span>
+          </button>
+          <h2 class="entry-title">Mio$mile</h2>
+        </div>
+        <div class="entry-details" id="details-miosmile">
+          <a class="entry-link" href="projects/miosmile/miosmile.html">
+            <img src="assets/images/placeholder.svg" alt="Mio$mile preview image" loading="lazy">
+            <p class="entry-sentence">54h Performance</p>
+          </a>
+        </div>
+      </li>
+      <li class="project-entry expanded" data-type="audio video">
+        <div class="entry-meta">
+          <span class="pill pill-date">01/02–28/02/2023</span>
+          <span class="type-chip audio">Audio</span><span class="type-chip video">Video</span>
+        </div>
+        <div class="entry-title-row">
+          <button class="entry-toggle" aria-expanded="true" aria-controls="details-in-shop-purchase" aria-label="Toggle details for In-Shop Purchase">
+            <span class="icon-plus">+</span><span class="icon-minus">&minus;</span>
+          </button>
+          <h2 class="entry-title">In-Shop Purchase</h2>
+        </div>
+        <div class="entry-details" id="details-in-shop-purchase">
+          <a class="entry-link" href="projects/in-shop-purchase/in-shop-purchase.html">
+            <img src="projects/in-shop-purchase/inshop.png" alt="In-Shop Purchase preview image" loading="lazy">
+            <p class="entry-sentence">A 1 month shopwindow installation, where passers-by could order digital objects.</p>
+          </a>
+        </div>
+      </li>
+      <li class="project-entry expanded" data-type="video">
+        <div class="entry-meta">
+          <span class="pill pill-date">21/10/2022</span>
+          <span class="type-chip video">Video</span>
+        </div>
+        <div class="entry-title-row">
+          <button class="entry-toggle" aria-expanded="true" aria-controls="details-the-dead-code-must-be-alive" aria-label="Toggle details for The Dead Code must be Alive!">
+            <span class="icon-plus">+</span><span class="icon-minus">&minus;</span>
+          </button>
+          <h2 class="entry-title">The Dead Code must be Alive!</h2>
+        </div>
+        <div class="entry-details" id="details-the-dead-code-must-be-alive">
+          <a class="entry-link" href="projects/the-dead-code-must-be-alive/the-dead-code-must-be-alive.html">
+            <img src="projects/the-dead-code-must-be-alive/Bildschirmfoto 2024-05-18 um 20.33.56.png" alt="The Dead Code must be Alive! preview image" loading="lazy">
+            <p class="entry-sentence">Interactive 3D World for a dance performance</p>
+          </a>
+        </div>
+      </li>
+      <li class="project-entry expanded" data-type="video">
+        <div class="entry-meta">
+          <span class="pill pill-date">19/10/2022</span>
+          <span class="type-chip video">Video</span>
+        </div>
+        <div class="entry-title-row">
+          <button class="entry-toggle" aria-expanded="true" aria-controls="details-blumen-im-osterwind-eines-laechelns" aria-label="Toggle details for Blumen im Osterwind eines Lächelns">
+            <span class="icon-plus">+</span><span class="icon-minus">&minus;</span>
+          </button>
+          <h2 class="entry-title">Blumen im Osterwind eines Lächelns</h2>
+        </div>
+        <div class="entry-details" id="details-blumen-im-osterwind-eines-laechelns">
+          <a class="entry-link" href="projects/blumen-im-osterwind-eines-laechelns/blumen-im-osterwind-eines-laechelns.html">
+            <img src="projects/blumen-im-osterwind-eines-laechelns/screenshot_blumen.png" alt="Blumen im Osterwind eines Lächelns preview image" loading="lazy">
+            <p class="entry-sentence">Digital Stagedesign for dance performance</p>
+          </a>
+        </div>
+      </li>
+      <li class="project-entry" data-type="video">
+        <div class="entry-meta">
+          <span class="pill pill-date">16/09/2022</span>
+          <span class="type-chip video">Video</span>
+        </div>
+        <div class="entry-title-row">
+          <button class="entry-toggle" aria-expanded="false" aria-controls="details-fenomeno" aria-label="Toggle details for Fenômeno">
+            <span class="icon-plus">+</span><span class="icon-minus">&minus;</span>
+          </button>
+          <h2 class="entry-title">Fenômeno</h2>
+        </div>
+        <div class="entry-details" id="details-fenomeno">
+          <a class="entry-link" href="projects/fenomeno/fenomeno.html">
+            <img src="assets/images/placeholder.svg" alt="Fenômeno preview image" loading="lazy">
+            <p class="entry-sentence">Assistance in 3D Visuals</p>
+          </a>
+        </div>
+      </li>
+      <li class="project-entry expanded" data-type="audio video">
+        <div class="entry-meta">
+          <span class="pill pill-date">15/07/2022</span>
+          <span class="type-chip audio">Audio</span><span class="type-chip video">Video</span>
+        </div>
+        <div class="entry-title-row">
+          <button class="entry-toggle" aria-expanded="true" aria-controls="details-today-was-a-weird-day-in-elden-ring" aria-label="Toggle details for today was a weird day in elden ring">
+            <span class="icon-plus">+</span><span class="icon-minus">&minus;</span>
+          </button>
+          <h2 class="entry-title">today was a weird day in elden ring</h2>
+        </div>
+        <div class="entry-details" id="details-today-was-a-weird-day-in-elden-ring">
+          <a class="entry-link" href="projects/today-was-a-weird-day-in-elden-ring/today-was-a-weird-day-in-elden-ring.html">
+            <img src="projects/today-was-a-weird-day-in-elden-ring/TodayWasAWeirdDayInEldenRing.png" alt="today was a weird day in elden ring preview image" loading="lazy">
+            <p class="entry-sentence">360 A/V installation</p>
+          </a>
+        </div>
+      </li>
+      <li class="project-entry expanded" data-type="game">
+        <div class="entry-meta">
+          <span class="pill pill-date">24/06/2022</span>
+          <span class="type-chip game">Game</span>
+        </div>
+        <div class="entry-title-row">
+          <button class="entry-toggle" aria-expanded="true" aria-controls="details-piano-city-full-walkthrough" aria-label="Toggle details for #6 Piano City - Full Walkthrough">
+            <span class="icon-plus">+</span><span class="icon-minus">&minus;</span>
+          </button>
+          <h2 class="entry-title">#6 Piano City - Full Walkthrough</h2>
+        </div>
+        <div class="entry-details" id="details-piano-city-full-walkthrough">
+          <a class="entry-link" href="projects/piano-city-full-walkthrough/piano-city-full-walkthrough.html">
+            <img src="projects/piano-city-full-walkthrough/pianocity-screenshot.png" alt="#6 Piano City - Full Walkthrough preview image" loading="lazy">
+            <p class="entry-sentence">A/V Piece with PlayerPiano</p>
+          </a>
+        </div>
+      </li>
+      <li class="project-entry expanded" data-type="audio video">
+        <div class="entry-meta">
+          <span class="pill pill-date">17/02/2022</span>
+          <span class="type-chip audio">Audio</span><span class="type-chip video">Video</span>
+        </div>
+        <div class="entry-title-row">
+          <button class="entry-toggle" aria-expanded="true" aria-controls="details-integrative-composition-v" aria-label="Toggle details for Integrative Composition V: The Final Examination">
+            <span class="icon-plus">+</span><span class="icon-minus">&minus;</span>
+          </button>
+          <h2 class="entry-title">Integrative Composition V: The Final Examination</h2>
+        </div>
+        <div class="entry-details" id="details-integrative-composition-v">
+          <a class="entry-link" href="projects/integrative-composition-v/integrative-composition-v.html">
+            <img src="projects/integrative-composition-v/220217_IntegrativeCompositionV_cLukiBecker.png" alt="Integrative Composition V: The Final Examination preview image" loading="lazy">
+            <p class="entry-sentence">Surround Video Fake Game Walkthrough (Bachelor Exam Concert)</p>
+          </a>
+        </div>
+      </li>
+      <li class="project-entry" data-type="video">
+        <div class="entry-meta">
+          <span class="pill pill-date">03/09/2021</span>
+          <span class="type-chip video">Video</span>
+        </div>
+        <div class="entry-title-row">
+          <button class="entry-toggle" aria-expanded="false" aria-controls="details-the-breath-of-my-digital-body" aria-label="Toggle details for The Breath of my digital body - save your Touch, honey">
+            <span class="icon-plus">+</span><span class="icon-minus">&minus;</span>
+          </button>
+          <h2 class="entry-title">The Breath of my digital body - save your Touch, honey</h2>
+        </div>
+        <div class="entry-details" id="details-the-breath-of-my-digital-body">
+          <a class="entry-link" href="projects/the-breath-of-my-digital-body/the-breath-of-my-digital-body.html">
+            <img src="projects/the-breath-of-my-digital-body/210903_1_TheBreathOfMyDigitalBody_cX.jpg" alt="The Breath of my digital body - save your Touch, honey preview image" loading="lazy">
+            <p class="entry-sentence">3D Video for Daria Nazarenko</p>
+          </a>
+        </div>
+      </li>
+      <li class="project-entry" data-type="video">
+        <div class="entry-meta">
+          <span class="pill pill-date">20/08/2021</span>
+          <span class="type-chip video">Video</span>
+        </div>
+        <div class="entry-title-row">
+          <button class="entry-toggle" aria-expanded="false" aria-controls="details-andras-2020-x-luki-becker-2021" aria-label="Toggle details for Andras_2020 x Luki Becker">
+            <span class="icon-plus">+</span><span class="icon-minus">&minus;</span>
+          </button>
+          <h2 class="entry-title">Andras_2020 x Luki Becker</h2>
+        </div>
+        <div class="entry-details" id="details-andras-2020-x-luki-becker-2021">
+          <a class="entry-link" href="projects/andras-2020-x-luki-becker-2021/andras-2020-x-luki-becker-2021.html">
+            <img src="assets/images/placeholder.svg" alt="Andras_2020 x Luki Becker preview image" loading="lazy">
+            <p class="entry-sentence">A/V Live Concert</p>
+          </a>
+        </div>
+      </li>
+      <li class="project-entry" data-type="video">
+        <div class="entry-meta">
+          <span class="pill pill-date">03/05/2021</span>
+          <span class="type-chip video">Video</span>
+        </div>
+        <div class="entry-title-row">
+          <button class="entry-toggle" aria-expanded="false" aria-controls="details-imminent-arrival" aria-label="Toggle details for Imminent Arrival">
+            <span class="icon-plus">+</span><span class="icon-minus">&minus;</span>
+          </button>
+          <h2 class="entry-title">Imminent Arrival</h2>
+        </div>
+        <div class="entry-details" id="details-imminent-arrival">
+          <a class="entry-link" href="projects/imminent-arrival/imminent-arrival.html">
+            <img src="projects/imminent-arrival/210503_ImminentArrival_cLukiBecker_placeholder.png" alt="Imminent Arrival preview image" loading="lazy">
+            <p class="entry-sentence"></p>
+          </a>
+        </div>
+      </li>
+      <li class="project-entry" data-type="video">
+        <div class="entry-meta">
+          <span class="pill pill-date">24/03/2021</span>
+          <span class="type-chip video">Video</span>
+        </div>
+        <div class="entry-title-row">
+          <button class="entry-toggle" aria-expanded="false" aria-controls="details-sereia-music-video" aria-label="Toggle details for Sereia Music Video">
+            <span class="icon-plus">+</span><span class="icon-minus">&minus;</span>
+          </button>
+          <h2 class="entry-title">Sereia Music Video</h2>
+        </div>
+        <div class="entry-details" id="details-sereia-music-video">
+          <a class="entry-link" href="projects/sereia-music-video/sereia-music-video.html">
+            <img src="projects/sereia-music-video/preview-sereia.png" alt="Sereia Music Video preview image" loading="lazy">
+            <p class="entry-sentence">Music Video for Andras_2020</p>
+          </a>
+        </div>
+      </li>
+      <li class="project-entry expanded" data-type="audio">
+        <div class="entry-meta">
+          <span class="pill pill-date">26/11/2020</span>
+          <span class="type-chip audio">Audio</span>
+        </div>
+        <div class="entry-title-row">
+          <button class="entry-toggle" aria-expanded="true" aria-controls="details-the-expression-of-hsp65" aria-label="Toggle details for The Expression Of Hsp65 Induced by Ultra High Definition Images In A Post-Modern Timeframe">
+            <span class="icon-plus">+</span><span class="icon-minus">&minus;</span>
+          </button>
+          <h2 class="entry-title">The Expression Of Hsp65 Induced by Ultra High Definition Images In A Post-Modern Timeframe</h2>
+        </div>
+        <div class="entry-details" id="details-the-expression-of-hsp65">
+          <a class="entry-link" href="projects/the-expression-of-hsp65/the-expression-of-hsp65.html">
+            <img src="projects/the-expression-of-hsp65/201126_TheExpressionOfxxx_cLukiBecker.png" alt="The Expression Of Hsp65 Induced by Ultra High Definition Images In A Post-Modern Timeframe preview image" loading="lazy">
+            <p class="entry-sentence">EP Release</p>
+          </a>
+        </div>
+      </li>
+      <li class="project-entry expanded" data-type="audio">
+        <div class="entry-meta">
+          <span class="pill pill-date">08/11/2020</span>
+          <span class="type-chip audio">Audio</span>
+        </div>
+        <div class="entry-title-row">
+          <button class="entry-toggle" aria-expanded="true" aria-controls="details-my-heart-will-go-on" aria-label="Toggle details for My Heart Will Go On">
+            <span class="icon-plus">+</span><span class="icon-minus">&minus;</span>
+          </button>
+          <h2 class="entry-title">My Heart Will Go On</h2>
+        </div>
+        <div class="entry-details" id="details-my-heart-will-go-on">
+          <a class="entry-link" href="projects/my-heart-will-go-on/my-heart-will-go-on.html">
+            <img src="projects/my-heart-will-go-on/201108_MyHeartWillGoOn_cMichaelSchlappa.png" alt="My Heart Will Go On preview image" loading="lazy">
+            <p class="entry-sentence">Midi Organ Piece</p>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </main>
+
+  <footer class="site-footer">
+    <span>&copy; 2026 Luki B</span>
+    <a href="legal/legal.html">Legal</a>
+  </footer>
+  <script src="scripts.js"></script>
+</body>
+</html>

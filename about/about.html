@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-tab" href="../feed.html">Feed</a>
+    <a class="site-tab is-active" href="about.html" aria-current="page">About</a>
+  </header>
+
+  <main class="site-main about-page">
+    <section id="bio">
+      <figure class="about-profile">
+        <img src="about-profile.jpg" alt="Portrait of Luki Becker" loading="lazy">
+      </figure>
+
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" class="lang-switch-btn is-active" data-lang="en" aria-pressed="true">EN</button>
+        <span class="lang-switch-sep" aria-hidden="true">/</span>
+        <button type="button" class="lang-switch-btn" data-lang="de" aria-pressed="false">DE</button>
+      </div>
+
+      <div class="about-bio" data-lang-panel="en">
+        <p>Luki Becker (she/they) is a media artist and composer. She currently lives in Hamburg, where she studies Multimedia Composition with Alexander Schubert. Her work engages with the computer game as an interactive medium and investigates gaming as a contemporary performance practice. Among her works are installative simulations that audiences can interact with, and staged pieces activated by performers. The starting point for Luki’s work is often musical concepts and setups, as well as their political and social implications.</p>
+      </div>
+      <div class="about-bio" data-lang-panel="de" hidden>
+        <p>Luki Becker (sie/dey) ist Medienkünstler:in und Komponist:in. Sie lebt derzeit in Hamburg, wo sie bei Alexander Schubert Multimedia Composition studiert. Ihrere Arbeit beschäftigt sich mit dem Computerspiel als interaktives Medium und untersucht gaming als moderne performance pratice. Unter ihren Arbeiten sind installative Simulationen, mit denen das Publikum interagieren kann oder inszenierte Stücke, die von Performer:innen aktiviert werden. Ausgangspunkt für Lukis Arbeiten sind oft musikalische Konzepte und Setups sowie deren politische und soziale Implikationen.</p>
+      </div>
+    </section>
+
+    <section id="press-kit">
+      <h2>Press Kit</h2>
+      <!-- TODO: drop images into about/press_pics/ and copy this block per image:
+      <figure class="press-pic">
+        <img src="press_pics/FILENAME.jpg" alt="Press picture of Luki Becker" loading="lazy">
+        <a class="button" href="press_pics/FILENAME.jpg" download>Download</a>
+      </figure>
+      -->
+      <p>Coming soon.</p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <!-- TODO: replace hello@example.com with the real address -->
+      <form class="contact-form" data-email="hello@example.com">
+        <label for="contact-subject">Subject</label>
+        <input type="text" id="contact-subject" name="subject">
+        <label for="contact-body">Message</label>
+        <textarea id="contact-body" name="body"></textarea>
+        <button class="button" type="submit">Send</button>
+      </form>
+    </section>
+
+    <section id="instagram">
+      <h2>Instagram</h2>
+      <!-- Official Instagram embed (public profile + embedding enabled). Fallback link if embed is blocked. -->
+      <div class="instagram-embed">
+        <blockquote
+          class="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/toytoytoytoytoytoytoyto/"
+          data-instgrm-version="14">
+          <a href="https://www.instagram.com/toytoytoytoytoytoytoyto/" target="_blank" rel="noopener">@toytoytoytoytoytoytoyto</a>
+        </blockquote>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>&copy; 2026 Luki B</span>
+    <a href="../legal/legal.html">Legal</a>
+  </footer>
+  <script src="../scripts.js"></script>
+  <script async src="https://www.instagram.com/embed.js"></script>
+</body>
+</html>

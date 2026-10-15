@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--
+  TEMPLATE for a project detail page.
+  Paths below assume the copy lives at projects/<slug>/<slug>.html.
+  How to use:
+  1. Create projects/<slug>/ and copy this file there as <slug>.html.
+  2. Put this project's images in that same folder, then run python3 sync-images.py
+     from the site root. Do not add <img> tags by hand.
+  3. Replace every [PLACEHOLDER] below.
+  4. Put the type next to the date as a chip (game / audio / video). A/V uses both
+     Audio and Video chips, same as the feed. Remove metadata rows that don't
+     apply (e.g. no event, no external link).
+  5. Add content blocks at the bottom (examples for text / image / YouTube /
+     video / 3D are provided as comments).
+  6. Add a matching entry to ../../feed.html with data-type (see PROJECT.md).
+     Page link: projects/<slug>/<slug>.html
+     Preview image: projects/<slug>/[FILENAME]
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>[PROJECT TITLE] — Luki B</title>
+  <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-tab is-active" href="../../feed.html" aria-current="page">Feed</a>
+    <a class="site-tab" href="../../about/about.html">About</a>
+  </header>
+
+  <main class="site-main project-page">
+    <p class="project-date"><span class="pill pill-date">[DD/MM/YYYY or DD/MM–DD/MM/YYYY]</span><span class="type-chip game">Game</span></p>
+    <div class="project-title-row">
+      <a class="project-back" href="../../feed.html" aria-label="Back to feed">&lt;</a>
+      <h1 class="project-title">[PROJECT TITLE]</h1>
+    </div>
+
+    <figure class="project-preview">
+      <img src="../../assets/images/placeholder.svg" alt="[PROJECT TITLE] preview image" loading="lazy">
+    </figure>
+
+    <dl class="project-meta">
+      <div><dt>Format</dt><dd>[Performance / Theatre / Concert / Installation / Workshop / File]</dd></div>
+      <div><dt>Workmode</dt><dd>[Solo / Collaboration]</dd></div>
+      <div><dt>Tools</dt><dd>[TOOLS]</dd></div>
+      <div><dt>With / For</dt><dd>[WITH OR FOR]</dd></div>
+      <div><dt>Event</dt><dd>[EVENT NAME]</dd></div>
+      <div><dt>Venue</dt><dd>[VENUE]</dd></div>
+      <div><dt>Place</dt><dd>[PLACE]</dd></div>
+      <div><dt>Link</dt><dd><a href="[URL]" target="_blank" rel="noopener">[LINK LABEL]</a></dd></div>
+    </dl>
+
+    <section class="project-content">
+      <!-- TEXT block -->
+      <p>[PROJECT TEXT]</p>
+
+      <!-- IMAGE block
+      <figure>
+        <img src="[FILENAME]" alt="[DESCRIPTION]" loading="lazy">
+      </figure>
+      -->
+
+      <!-- YOUTUBE block (use the /embed/ URL)
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/[VIDEO_ID]"
+                title="[VIDEO TITLE]"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen loading="lazy"></iframe>
+      </div>
+      -->
+
+      <!-- VIDEO FILE block
+      <video src="[FILENAME].mp4" controls playsinline preload="metadata"></video>
+      -->
+
+      <!-- 3D ASSET block (requires model-viewer, add the script tag once per page)
+      <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+      <model-viewer src="[FILENAME].glb" camera-controls auto-rotate
+                    style="width: 100%; height: 320px;"></model-viewer>
+      -->
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>&copy; 2026 Luki B</span>
+    <a href="../../legal/legal.html">Legal</a>
+  </footer>
+  <script src="../../scripts.js"></script>
+</body>
+</html>
